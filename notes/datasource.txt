@@ -1,0 +1,61 @@
+* generate data source
+sc-gen data-source md.DS
+* add logs to methods
+* change the instantiation 
+  store: SC.Store.create().from('Md.Ds')
+* creates local query
+sc_require('models/person');
+Md.PEOPLE_QUERY = SC.Query.local(Md.Person);
+
+* run server
+shotgun demo.rb -p9393
+
+* build file
+proxy '/people', :to => 'localhost:9393'
+
+
+fetch: function(store, query) {
+  console.log("fetch");
+  
+  if (query === Md.PEOPLE_QUERY) {
+      return this.getFromUri('/people', Md.Person, store, query);
+  }
+// TODO: Add handlers to fetch data for specific queries.  
+// call store.dataSourceDidFetchQuery(query) when done.
+
+    return NO ; // return YES if you handled the query
+},
+getFromUri: function(uri, type, store, query) {
+  SC.Request.getUrl(uri)
+      .set('isJSON', YES)
+      .notify(this, this._didFetchAll, { query: query, store: store, type: type })
+      .send();
+ return YES;
+},
+_didFetchAll: function(response, params) {
+  var store = params.store;
+  var query = params.query; 
+  var type  = params.type;
+  if (SC.ok(response)) {
+    // load the contacts into the store...
+    store.loadRecords(type, response.get('body'));
+
+    // notify store that we handled the fetch
+    store.dataSourceDidFetchQuery(query);
+
+  // handle error case
+  } else store.dataSourceDidErrorQuery(query, response);
+},
+
+* remote query
+else if (query === Md.PEOPLE_OF_MONTH_QUERY) {
+     return this.getFromUri('/best_people', Md.Person, store, query);
+ }
+ 
+Md.PEOPLE_QUERY             = SC.Query.local(Md.Person, {
+    orderBy: 'lastName, firstName'
+});
+Md.PEOPLE_OF_MONTH_QUERY    = SC.Query.remote(Md.Person);
+
+* build file
+proxy '/best_people', :to => 'localhost:9393'

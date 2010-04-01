@@ -1,0 +1,78 @@
+people = [
+    {
+      :guid           => "/people/1",
+      :firstName      => "Dwight",
+      :lastName       => "Schrutte"
+    },
+    {
+      :guid           => "/people/2",
+      :firstName      => "Michael",
+      :lastName       => "Scott"
+    },
+    {
+      :guid           => "/people/3",
+      :firstName      => "Jim",
+      :lastName       => "Halpert"
+    },
+    {
+      :guid           => "/people/4",
+      :firstName      => "Sid",
+      :lastName       => "Bergerac"
+    },
+    {
+      :guid           => "/people/5",
+      :firstName      => "Evgenij",
+      :lastName       => "Kalasnikov"
+    },
+    {
+      :guid           => "/people/6",
+      :firstName      => "Eva",
+      :lastName       => "Sombrero"
+    },
+    {
+      :guid           => "/people/7",
+      :firstName      => "John",
+      :lastName       => "Doe"
+    },
+    {
+      :guid           => "/people/8",
+      :firstName      => "Jane",
+      :lastName       => "Doe"
+    },
+    {
+      :guid           => "/people/9",
+      :firstName      => "Mr",
+      :lastName       => "White"
+    },
+    {
+      :guid           => "/people/10",
+      :firstName      => "Scott",
+      :lastName       => "Parkinson"
+    },
+    {
+      :guid           => "/people/11",
+      :firstName      => "Mark",
+      :lastName       => "Shuttleworth"
+    },
+    {
+      :guid           => "/people/12",
+      :firstName      => "Peregrin",
+      :lastName       => "Took"
+    },
+    {
+      :guid           => "/people/13",
+      :firstName      => "Stanislav",
+      :lastName       => "Lemm"
+    },
+    {
+      :guid           => "/people/14",
+      :firstName      => "John",
+      :lastName       => "Tolkien"
+    },
+    {
+      :guid           => "/people/15",
+      :firstName      => "Harry",
+      :lastName       => "Potter"
+    },
+    
+  ]

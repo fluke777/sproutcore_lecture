@@ -1,0 +1,17 @@
+In sproutcore, data handling consists of several layer. Some terms.
+
+1) DataSource, connects your DataStore to the backend.
+2) DataStore, stores your actual data hashes
+3) DataHash, is the raw data sitting in the DataStore
+4) Records, is the parent of all model objects. Records are created out of data hashes.
+5) StoreKeys, identifies DataHash in the DataStore. Remains the same for the life of a runtime.
+
+DataSource
+==========
+Basically the thing, that connects you to the backend. This is, what you have to write on your own, but SC gives you a helping hand by providing a DataSource class, which you should inhert from and change stuff. At certains points (see later), DS will be called and asked to do stuff.
+
+store.readDataHash(storeKey)
+store.readStatus(storeKey)
+store.recordTypeFor(storeKey)
+store.idFor(storeKey)
+recordType.idFor(storeKey)

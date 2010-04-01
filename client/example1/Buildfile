@@ -1,0 +1,10 @@
+# ===========================================================================
+# Project:   Example1
+# Copyright: ©2010 My Company, Inc.
+# ===========================================================================
+
+# Add initial buildfile information here
+config :all, :required => :sproutcore
+
+proxy '/people', :to => 'localhost:9393'
+proxy '/projects', :to => 'localhost:9393'

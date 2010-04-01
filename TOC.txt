@@ -1,0 +1,96 @@
+Intro 1
+=======
+What are our problems.
+
+* Anemic Domain Layer
+  * not communicating in terms of bussiness objects and their relationships
+  * instead talking about URIs and hashes, which is IMHO bad in complex UI development
+  * mangling transport layer and bussiness logic in our Domain Objects
+  * our domain layer is very similar to REST API, which should be two separate things
+* Asynchronous style of programming
+  * prefetching of all dependencies, to allow synchronous stlye of programming.
+  * Ok, but still seeing tons of callbacks all arround the place.
+* Tons of gluecode
+  * bad abstraction in common usecases (displaying lists, trees, project/report/chart/xy settings, filtering)
+  * we need to update stuff manually, event driven programming is the only way
+
+Example 1 -> DONE
+=========
+Show, how to build a very basic application domain.
+* fixtures
+* kvc
+* computed values
+  * get
+  * set
+  * cache
+* find
+
+Example 2 -> DONE
+=========
+Add simple UI. A view of the list and a detailed view on selected item.
+* binding
+* mention transforms
+
+Example 3 -> DONE
+=========
+Show, how to connect front end to backend, without breaking the app. Should show basic implementation of the datasource
+* implement only fetch
+
+Example 4 -> DONE
+=========
+Show Domain model
+* definig attributes via helper
+* defining computed properties, cacheable
+* primary keys, keys
+* transient properties
+* simple toOne, toMany relationships
+* isMaster, reverse
+* basic bussiness logic
+* nested store
+* queries
+  * conditions
+  * sorting
+  
+
+Example 5
+=========
+Dive deeper into the workings of Datasource and Datastore, terminology etc.
+* data lifecycle
+* (point out, that CRUD is very easy, if you follow some conventions).
+* usual cases
+  * accessing referenced data only when needed
+  * local vs remote queries
+  * remote sorted queries
+  * huge collections, show sparse array
+* mapping structures like {metadata: {}, content: {}}
+
+Example 6
+=========
+Bindings common usecases
+* one way
+* nil cases
+* synchronzation of both ends
+* binding through *
+
+Example 7
+=========
+* couple of nifty things
+  * take look at a Comet use case -> updating things on other client and propagate stuff on the client
+  * how to build several bussiness objects from one request. Usecase oriented API
+
+Example 8
+=========
+How to use the datasource in our current setup.
+* sproutcore is IMHO a way, but ...
+* what is payload impact
+* implement simple example for using YUI views with data
+
+Example 9 needed?
+=========
+Testing. Have a look, what is the support for testing. Skim only lightly, since we have our testing already in place.
+
+Other notable stuff, we could steal
+===================================
+Simple Localization
+Support for theming (it is going to get better in 1.1)
+Support fo declarative UI

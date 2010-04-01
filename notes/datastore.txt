@@ -1,0 +1,12 @@
+Store
+=====
+
+* Datastore is all about maintaining hashes.
+* it is a local in memory store.
+* In your application however, you will encounter Records and RecordArrays. Your Model objects.
+* These are wrapping datahashes.
+* Records are returned, when you require one specific Object.
+* RecordArrays are returned, when you construct a query. It is an SC.array of Records, but these are created in a lazy fashion.
+
+* dataHashes should contain only primitive types
+* support for mapping relations

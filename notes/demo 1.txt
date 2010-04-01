@@ -1,0 +1,70 @@
+*Basic Person application* 
+
+* init application
+  sc-init Demo
+* create model Person
+  sc-gen model Demo.Person
+* add fixtures
+* some mangling in console
+colection = Demo.store.find(Demo.Person);
+collection.objectAt(2).get('firstName');
+* show definition of a computed property
+
+fullName: function() {
+     return "%@ %@".fmt(this.get('firstName'), this.get('lastName'));
+}.property()
+
+* add set support
+
+fullName: function(key, value) {
+     if (value !== undefined) {
+          var parts = value.split(' ') ;
+          this.beginPropertyChanges()
+               .set('firstName', parts[0])
+               .set('lastName', parts[1])
+          .endPropertyChanges() ;
+     }
+     return "%@ %@".fmt(this.get('firstName'), this.get('lastName')); 
+}.property()
+
+* word about caching
+
+}.property('firstName', 'lastName').cacheable()
+
+* create View in main_page.js
+
+childViews: 'peopleView'.w(),
+
+peopleView: SC.ListView.design({
+  layout: { centerX: 0, top: 0, width: 200, height: 400 },
+  content: ['1', "2", "3"]
+})
+
+* create ArrayController
+sc-gen controller Demo.peopleController
+* change ObjectController to ArrayControler
+* add binding to controller
+contentBinding: 'Demo.peopleController.arrangedObjects'
+* fill the controller
+Demo.peopleController.set('content', Demo.store.find(Demo.Person));
+* add displaying of proper value in list
+contentValueKey: 'fullName'
+
+* create another controller
+sc-gen controller Demo.personController
+* bind selected person to personController
+selectionBinding: 'Demo.peopleController.selection'
+* make the peopleController *not in view* to select only one person at a time
+allowsMultipleSelection: NO
+* bind content of personController to selection. Bind with transform
+contentBinding: SC.Binding.from("Demo.peopleController.selection").single()
+* create View
+firstNameView: SC.LabelView.design({
+    layout: {left: 0, top: 0, width: 200, height: 30},
+    tagName: "h1",
+    valueBinding: "Demo.personController.firstName" 
+})
+* update childViews
+childViews: 'peopleView firstNameView'.w(),
+
+

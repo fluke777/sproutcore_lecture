@@ -1,0 +1,67 @@
+--- 
+/Users/tomas/sandbox/sproutcore_lecture/client/example1/apps/example1/main.js: 
+  scan_source: 
+    mtime: 1269217257
+    value: []
+
+/Users/tomas/sandbox/sproutcore_lecture/client/example1/apps/example1/controllers/projects.js: 
+  scan_source: 
+    mtime: 1269216998
+    value: []
+
+/Users/tomas/sandbox/sproutcore_lecture/client/example1/apps/example1/data_sources/example1.js: 
+  scan_source: 
+    mtime: 1269214866
+    value: 
+    - - sc_require
+      - "'"
+      - models/person
+/Users/tomas/sandbox/sproutcore_lecture/client/example1/apps/example1/resources/loading.rhtml: 
+  scan_source: 
+    mtime: 1269192987
+    value: []
+
+/Users/tomas/sandbox/sproutcore_lecture/client/example1/apps/example1/controllers/current_project.js: 
+  scan_source: 
+    mtime: 1269215820
+    value: []
+
+/Users/tomas/sandbox/sproutcore_lecture/client/example1/apps/example1/fixtures/person.js: 
+  scan_source: 
+    mtime: 1269194092
+    value: 
+    - - sc_require
+      - "'"
+      - models/person
+/Users/tomas/sandbox/sproutcore_lecture/client/example1/apps/example1/fixtures/project.js: 
+  scan_source: 
+    mtime: 1269200454
+    value: 
+    - - sc_require
+      - "'"
+      - models/project
+/Users/tomas/sandbox/sproutcore_lecture/client/example1/apps/example1/models/project.js: 
+  scan_source: 
+    mtime: 1269213948
+    value: []
+
+/Users/tomas/sandbox/sproutcore_lecture/client/example1/apps/example1/controllers/users.js: 
+  scan_source: 
+    mtime: 1269216990
+    value: []
+
+/Users/tomas/sandbox/sproutcore_lecture/client/example1/apps/example1/core.js: 
+  scan_source: 
+    mtime: 1269215876
+    value: []
+
+/Users/tomas/sandbox/sproutcore_lecture/client/example1/apps/example1/models/person.js: 
+  scan_source: 
+    mtime: 1269213955
+    value: []
+
+/Users/tomas/sandbox/sproutcore_lecture/client/example1/apps/example1/resources/main_page.js: 
+  scan_source: 
+    mtime: 1269216409
+    value: []
+

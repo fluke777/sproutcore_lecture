@@ -1,0 +1,123 @@
+* create application md
+sc-init md
+change to dir md
+* create Person model
+sc-gen model Md.Person
+* create Project model
+sc-gen model Md.Project
+* Mention the id and
+primaryKey: “foo” property
+get('id')
+
+* set person with some attributes
+name: SC.Record.attr(String),
+isOld: SC.Record.attr(Boolean, { defaultValue: YES , key: "old"})
+*
+
+
+Md.Person = SC.Record.extend(
+/** @scope Md.Person.prototype */ {
+
+  // TODO: Add your own code here.
+  firstName:     SC.Record.attr(String),
+  LastName:     SC.Record.attr(String),
+  age:      SC.Record.attr(Number),
+  isOld:    function() {
+      return this.get('age') > 50;
+  }.property('age').cacheable(),
+  
+  // Computed Property
+  description: function(key, val) {
+      if (val !== undefined) {
+          var parts = val.split(" ");
+          this.beginPropertyChanges()
+            .set('age', parts[0])
+            .set('firstName', parts[1])
+          .endPropertyChanges();
+      }
+      return "%@ %@".fmt(this.get("age"), this.get("firstName"));
+  }.property('age', 'firstName').cacheable(),
+  
+  // Transient
+  lastTimeSeenAtWork: null,
+  // Mapping
+  project:  SC.Record.toOne("Md.Project", { 
+    inverse: "people", isMaster: NO 
+  }),
+  
+  
+  addToProject: function(aProject) {
+      this.set('project', aProject);
+  },
+  
+  quitProject: function() {
+      this.set('project', null);
+  }
+  
+});
+
+
+
+
+
+{ guid: 1,
+  name: "Michael",
+  project: 1,
+  age: 20 },
+
+{ guid: 2,
+  name: "Dwight",
+  project: 2,
+  age: 30 },
+
+{ guid: 3,
+  name: "Jim",
+  project: 2,
+  age: 60 }
+
+
+
+  { guid: 1,
+    name: "GDC",
+    people: [1] },
+  
+  { guid: 2,
+    name: "SFDC",
+    people: [2, 3] }
+    
+* check the state of the record
+record.get(‘status’) & SC.Record.READY
+
+* nested store example
+nested = Md.store.chain();
+jim = Md.store.find(Md.Person, 1);
+njim = nested.find(Md.Person, 1);
+nijm = nested.find(jim);
+nested.commitChanges();
+nested.discardChanges();
+
+* show error on conflict
+* show immediate update
+nested = Md.store.chain();
+nested.set('lockOnRead', NO)
+
+* search
+* several possibilities
+q = SC.Query.local(Md.Person, ‘name = {name}’,{ name: ‘Jim’ });
+q = SC.Query.local(Md.Person, ‘name = "Jim"’);
+q = SC.Query.local(Md.Person,{ conditions: 'name = {name}', name: 'Jim' });
+p = MyApp.store.find(q);
+p.get('length');
+
+p = Md.store.find(Md.Project, 2);
+q = SC.Query.local(Md.Person,{ conditions: 'project = {project}', project: p });
+
+q = SC.Query.local(Md.Person,{ conditions: 'project = {project}', project: p , orderBy: 'name DESC'});
+
+projects = Md.store.find(Md.Project)
+q = SC.Query.local(Md.Person,{ conditions: 'project ANY {projects} AND age > {age}', projects:  projects.toArray(), age: 45, orderBy: 'name DESC'});
+
+* Record types
+q = SC.Query.local(Md.Record);
+q = SC.Query.local(Md.Taggable, { conditions: 'tags CONTAINS "gdc"');
+

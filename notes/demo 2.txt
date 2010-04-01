@@ -1,0 +1,42 @@
+*Conecting basic application to a server*
+
+* create datasource
+sc-gen data-source Demo.PeopleDataSource
+* add require
+sc_require('models/person');
+* add local query
+Demo.PEOPLE_QUERY = SC.Query.local(Demo.Person, {
+  orderBy: 'lastName'
+});
+* change definition in main, to use the find constant
+var people = Demo.store.find(Demo.PEOPLE_QUERY);
+Demo.peopleController.set('content', people);
+
+* activate the data source
+store: SC.Store.create({ 
+  commitRecordsAutomatically: YES
+}).from('Demo.PeopleDataSource')
+
+* fetch the stuff from backend
+if (query === Demo.PEOPLE_QUERY) {
+    SC.Request.getUrl('/people').json()
+      .notify(this, 'didFetchPeople', store, query)
+      .send();
+    return YES;
+}
+
+* Update buildFile with
+proxy '/people', :to => 'localhost:9393'
+* Run server with
+shotgun demo.rb -p 9393
+
+* handle data
+didFetchPeople: function(response, store, query) {
+  if (SC.ok(response)) {
+    store.loadRecords(Demo.Person, response.get('body').content);
+    store.dataSourceDidFetchQuery(query);
+ 
+  } else store.dataSourceDidErrorQuery(query, response);
+},
+
+Demo.store.createRecord(Demo.Person, {firstName: "Tomas", lastName: "Svara"})

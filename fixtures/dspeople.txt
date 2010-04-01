@@ -1,0 +1,93 @@
+people = [
+    {
+      :guid           => "/people/1",
+      :firstName      => "Dwight",
+      :lastName       => "Schrutte",
+      :project        => "/projects/1"
+    },
+    {
+      :guid           => "/people/2",
+      :firstName      => "Michael",
+      :lastName       => "Scott",
+      :project        => "/projects/1"
+    },
+    {
+      :guid           => "/people/3",
+      :firstName      => "Jim",
+      :lastName       => "Halpert",
+      :project        => "/projects/1"
+    },
+    {
+      :guid           => "/people/4",
+      :firstName      => "Sid",
+      :lastName       => "Bergerac",
+      :project        => "/projects/1"
+    },
+    {
+      :guid           => "/people/5",
+      :firstName      => "Evgenij",
+      :lastName       => "Kalasnikov",
+      :project        => "/projects/1"
+    },
+    {
+      :guid           => "/people/6",
+      :firstName      => "Eva",
+      :lastName       => "Sombrero",
+      :project        => "/projects/1"
+    },
+    {
+      :guid           => "/people/7",
+      :firstName      => "John",
+      :lastName       => "Doe",
+      :project        => "/projects/1"
+    },
+    {
+      :guid           => "/people/8",
+      :firstName      => "Jane",
+      :lastName       => "Doe",
+      :project        => "/projects/1"
+    },
+    {
+      :guid           => "/people/9",
+      :firstName      => "Mr",
+      :lastName       => "White",
+      :project        => "/projects/1"
+    },
+    {
+      :guid           => "/people/10",
+      :firstName      => "Scott",
+      :lastName       => "Parkinson",
+      :project        => "/projects/1"
+    },
+    {
+      :guid           => "/people/11",
+      :firstName      => "Mark",
+      :lastName       => "Shuttleworth",
+      :project        => "/projects/1"
+    },
+    {
+      :guid           => "/people/12",
+      :firstName      => "Peregrin",
+      :lastName       => "Took",
+      :project        => "/projects/1"
+    },
+    {
+      :guid           => "/people/13",
+      :firstName      => "Stanislav",
+      :lastName       => "Lemm",
+      :project        => "/projects/1"
+    },
+    {
+      :guid           => "/people/14",
+      :firstName      => "John",
+      :lastName       => "Tolkien",
+      :project        => "/projects/1"
+    },
+    {
+      :guid           => "/people/15",
+      :firstName      => "Harry",
+      :lastName       => "Potter",
+      :project        => "/projects/1"
+    },
+    
+  ]
